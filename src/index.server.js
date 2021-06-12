@@ -37,9 +37,9 @@ mongoose
   .then(() => {
     console.log("Database connected");
   })
-  .catch(error) => {
+  .catch((error) => {
     console.log("db err=",error);
-  };
+  });
 //mongodb://anagha:<insertYourPassword>@docdb-2021-06-12-15-40-08.cluster-cunfiowxbgtl.us-east-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
 // var url = "mongodb://localhost:27017/EC1";
 // mongoose
