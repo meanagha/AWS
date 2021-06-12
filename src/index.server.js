@@ -22,29 +22,9 @@ env.config();
 
 // mongodb connection
 //mongodb+srv://root:<password>@cluster0.8pl1w.mongodb.net/<dbname>?retryWrites=true&w=majority
-mongoose
-  .connect(
-    //`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.8pl1w.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
-    `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_DATABASE}.cluster-cunfiowxbgtl.us-east-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-  )
-  .then((e) => {
-    console.log(e)
-    console.log("Database connected");
-  })
-  .catch((rr) => {
-    console.log(rr)
-    console.log("Database not connected",rr);
-  });
-
-// var url = "mongodb://localhost:27017/EC1";
 // mongoose
-//   .connect(url,
+//   .connect(
+//     `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.8pl1w.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
 //     {
 //       useNewUrlParser: true,
 //       useUnifiedTopology: true,
@@ -55,6 +35,19 @@ mongoose
 //   .then(() => {
 //     console.log("Database connected");
 //   });
+var url = "mongodb://localhost:27017/EC1";
+mongoose
+  .connect(url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  )
+  .then(() => {
+    console.log("Database connected");
+  });
 
 app.use(cors());
 app.use(express.json());
