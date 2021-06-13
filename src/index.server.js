@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
+const fs = require('fs');
 
 //routes
 const authRoutes = require("./routes/auth");
@@ -22,22 +23,11 @@ env.config();
 
 // mongodb connection
 //mongodb+srv://root:<password>@cluster0.8pl1w.mongodb.net/<dbname>?retryWrites=true&w=majority
-mongoose
-  .connect(
-    `mongodb://anagha:ganapati123@flipkartdatabase.cluster-cunfiowxbgtl.us-east-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-  )
-  .then(() => {
-    console.log("Database connected");
-  });
-// var url = "mongodb://localhost:27017/EC1";
+
+
 // mongoose
-//   .connect(url,
+//   .connect(
+//     `mongodb://anagha:ganapati123@flipkartdatabase.cluster-cunfiowxbgtl.us-east-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`,
 //     {
 //       useNewUrlParser: true,
 //       useUnifiedTopology: true,
@@ -48,6 +38,19 @@ mongoose
 //   .then(() => {
 //     console.log("Database connected");
 //   });
+var url = "mongodb://localhost:27017/EC1";
+mongoose
+  .connect(url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  )
+  .then(() => {
+    console.log("Database connected");
+  });
 
 app.use(cors());
 app.use(express.json());
